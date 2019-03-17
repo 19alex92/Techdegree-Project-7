@@ -54,3 +54,15 @@ def sign_out(request):
     logout(request)
     messages.success(request, "You've been signed out. Come back soon!")
     return HttpResponseRedirect(reverse('home'))
+
+
+def user_profile(request):
+    pass
+
+
+def edit_profile(request):
+    pass
+
+
+def change_password(request):
+    pass
