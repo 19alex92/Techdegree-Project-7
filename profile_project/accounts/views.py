@@ -1,7 +1,7 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -19,7 +19,7 @@ def sign_in(request):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect(
-                        reverse('home')  # TODO: go to profile
+                        reverse('home')  # TODO: go to profile------------------------------------------
                     )
                 else:
                     messages.error(
@@ -49,7 +49,7 @@ def sign_up(request):
                 request,
                 "You're now a user! You've been signed in, too."
             )
-            return HttpResponseRedirect(reverse('home'))  # TODO: go to profile
+            return HttpResponseRedirect(reverse('home'))  # TODO: go to profile-----------------------
     return render(request, 'accounts/sign_up.html', {'form': form})
 
 
@@ -68,7 +68,7 @@ def profile(request):
 def edit_profile(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, instance=request.user)
-        profile_form = ProfileEditForm(request.POST,request.FILES, instance=request.user.profile)
+        profile_form = ProfileEditForm(request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -90,4 +90,5 @@ def edit_profile(request):
 
 
 def change_password(request):
-    pass
+    form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {'form':form})
