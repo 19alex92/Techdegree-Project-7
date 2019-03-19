@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}User Profile | {{ super }}{% endblock %}
+
+{% block body %}
+
+<div>
+    <p>{{ user.username }}</p>
+    <P>{{ user.profile.first_name }}</P>
+    <img src="{{ user.profile.image.url }}">
+    <a href="{% url 'accounts:edit_profile' %}">Edit Profile Information</a>
+</div>
+
+{% endblock %}

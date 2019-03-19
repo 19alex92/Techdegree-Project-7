@@ -1,9 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+from .forms import UserRegisterForm, UserEditForm, ProfileEditForm
 
 
 def sign_in(request):
@@ -32,9 +35,9 @@ def sign_in(request):
 
 
 def sign_up(request):
-    form = UserCreationForm()
+    form = UserRegisterForm()
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = UserRegisterForm(data=request.POST)
         if form.is_valid():
             form.save()
             user = authenticate(
@@ -56,12 +59,22 @@ def sign_out(request):
     return HttpResponseRedirect(reverse('home'))
 
 
-def user_profile(request):
-    pass
+@login_required
+def profile(request):
+    return render(request, 'accounts/profile.html')
 
 
+@login_required
 def edit_profile(request):
-    pass
+    user_form = UserEditForm()
+    profile_form = ProfileEditForm()
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
+    return render(request, 'accounts/edit_profile.html', context)
 
 
 def change_password(request):
