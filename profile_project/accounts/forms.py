@@ -27,6 +27,9 @@ class ProfileEditForm(forms.ModelForm):
         fields = [
             'first_name',
             'last_name',
+            'favorite_animal',
+            'favorite_food',
+            'hobby',
             'bio',
             'image'
         ]

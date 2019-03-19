@@ -7,6 +7,9 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=255, blank=True, default='')
     last_name = models.CharField(max_length=255, blank=True, default='')
     date_of_birth = models.DateField(blank=True, auto_now=True)
+    favorite_animal = models.CharField(max_length=255, blank=True, default='')
+    favorite_food = models.CharField(max_length=300, blank=True, default='')
+    hobby = models.CharField(max_length=300, blank=True, default='')
     bio = models.TextField(blank=True, default='')
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 

@@ -4,11 +4,23 @@
 
 {% block body %}
 
-<div>
-    <p>{{ user.username }}</p>
-    <P>{{ user.profile.first_name }}</P>
-    <img src="{{ user.profile.image.url }}">
-    <a href="{% url 'accounts:edit_profile' %}">Edit Profile Information</a>
+<div class="grid-parent">
+    <div class="grid-25">
+        <img class="grid-100" src="{{ user.profile.image.url }}">
+    </div>
+
+    <div class="grid-75">
+        <h1>{{ user.username }}</h1>
+        <p>{{ user.email }}</p>
+        <P>{{ user.profile.first_name }}</P>
+        <P>{{ user.profile.last_name }}</P>
+        <P>{{ user.profile.date_of_birth }}</P>
+        <P>{{ user.profile.favorite_animal }}</P>
+        <P>{{ user.profile.favorite_food }}</P>
+        <P>{{ user.profile.hobby }}</P>
+        <p>{{ user.profile.bio }}</p>
+        <a href="{% url 'accounts:edit_profile' %}">Edit Profile Information</a>
+    </div>
 </div>
 
 {% endblock %}
