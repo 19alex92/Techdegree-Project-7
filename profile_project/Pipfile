@@ -8,6 +8,10 @@ verify_ssl = true
 [packages]
 Django = "==1.9.9"
 Pillow = "==5.3.0"
+django-bootstrap4 = "*"
+django-bootstrap-datepicker-plus = "*"
+django-tinymce = "*"
+django-froala-editor = "*"
 
 [requires]
 python_version = "3.7"

@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .forms import UserRegisterForm, UserEditForm, ProfileEditForm
+from .forms import UserRegisterForm, UserEditForm, ProfileEditForm, ChangeEmailForm
 
 
 def sign_in(request):
@@ -19,7 +19,7 @@ def sign_in(request):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect(
-                        reverse('home')  # TODO: go to profile------------------------------------------
+                        reverse('accounts:profile')
                     )
                 else:
                     messages.error(
@@ -49,7 +49,7 @@ def sign_up(request):
                 request,
                 "You're now a user! You've been signed in, too."
             )
-            return HttpResponseRedirect(reverse('home'))  # TODO: go to profile-----------------------
+            return HttpResponseRedirect(reverse('accounts:profile'))
     return render(request, 'accounts/sign_up.html', {'form': form})
 
 
@@ -76,7 +76,7 @@ def edit_profile(request):
                 request,
                 "You edited your profile!"
             )
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('accounts:profile'))
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
@@ -90,5 +90,29 @@ def edit_profile(request):
 
 
 def change_password(request):
-    form = PasswordChangeForm(request.user)
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password is changed!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Please correct the error')
+    else:
+        form = PasswordChangeForm(request.user)
     return render(request, 'accounts/change_password.html', {'form':form})
+
+
+def change_email(request):
+    if request.method == 'POST':
+        form = ChangeEmailForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your email is changed!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Please correct the error')
+    else:
+        form = ChangeEmailForm(instance=request.user)
+    return render(request, 'accounts/change_email.html', {'form':form})

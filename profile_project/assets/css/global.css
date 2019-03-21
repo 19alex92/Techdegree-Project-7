@@ -814,7 +814,6 @@ input[type="button"] {
   text-decoration: none;
   color: #689b98;
   background: none;
-  box-shadow: 0 0 0 2px #689b98 inset;
   position: relative;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
@@ -836,7 +835,6 @@ button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover {
-  box-shadow: 0 0 0 2px #537d7b inset;
   color: #537d7b;
   outline: 0;
 }
@@ -1436,7 +1434,7 @@ li:only-child .circle--clone--remove {
 
 /* line 2, ../sass/circle/components/headers.sass */
 .circle--header {
-  background: #537d7b;
+  background: #005661;
   padding: 20px 0;
   margin-bottom: 30px;
 }
@@ -1506,11 +1504,11 @@ li:only-child .circle--clone--remove {
 }
 /* line 35, ../sass/circle/components/headers.sass */
 .circle--header a {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(223, 223, 223, 0.616);
 }
 /* line 37, ../sass/circle/components/headers.sass */
 .circle--header a:hover {
-  color: white;
+  color: rgb(121, 121, 121);
 }
 /* line 39, ../sass/circle/components/headers.sass */
 .circle--header nav {
@@ -2104,4 +2102,7 @@ input[type="email"].circle--input--h6, input[type="number"].circle--input--h6, i
 /* line 13, ../sass/global.sass */
 .logo:hover {
   box-shadow: 0 0 0 15px #fff inset;
+}
+.dropdown-menu-style a {
+  color: #000;
 }

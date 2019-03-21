@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block extra_style %}
+    {{ profile_form.media }}
+{% endblock %}
+
 {% block title %}Edit Profile | {{ super }}{% endblock %}
 
 {% block body %}

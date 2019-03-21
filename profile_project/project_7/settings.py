@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig'
-    #'accounts',
+    'accounts.apps.AccountsConfig',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
+    'froala_editor',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -144,3 +146,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'accounts:sign_in'
+
+FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'draggable',
+        'entities', 'font_family', 'font_size', 'fullscreen', 'line_breaker', 'link', 'lists',
+        'paragraph_format', 'quick_insert', 'save', 'url')

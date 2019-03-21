@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'profile/$', views.profile, name='profile'),
     url(r'profile/edit/$', views.edit_profile, name='edit_profile'),
     url(r'profile/change_password/$', views.change_password, name='change_password'),
+    url(r'profile/change_email/$', views.change_email, name='change_email'),
 ]

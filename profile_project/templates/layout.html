@@ -18,10 +18,14 @@
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Cousine'
           rel='stylesheet' type='text/css'>
-
+    
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+        
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="{% static "css/global.css" %}">
+
 
     <!-- JS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -31,7 +35,10 @@
             src="{% static "js/autogrow.js" %}"></script>
     <script type="text/javascript" src="{% static "js/global.js" %}"></script>
 
+    {% bootstrap_javascript jquery='full' %}
 
+    {% block extra_style %}
+    {% endblock %}
 </head>
 <body>
 <header class="circle--header">
@@ -44,25 +51,41 @@
             </div>
             <div class="circle--fluid--cell circle--fluid--primary">
                 <nav>
+                    {% if user.is_authenticated %}
                     <ul class="circle--inline">
-                        <li><a href="#">nav</a></li>
-                        <li><a href="#">here?</a></li>
+                        <li><a href="{% url 'accounts:profile' %}">Profile</a></li>
                     </ul>
+                    {% endif %}
                 </nav>
             </div>
             <div class="circle--fluid--cell circle--fluid--secondary">
-                <nav>
-                    <ul class="circle--inline">
-                        {% if not user.is_authenticated %}
+                {% if not user.is_authenticated %}
+                    <nav>
+                        <ul class="circle--inline">
                             <li><a href="{% url 'accounts:sign_up' %}">Sign Up</a></li>
                             <li><a href="{% url 'accounts:sign_in' %}">Sign In</a></li>
-                        {% else %}
-                            <li><a href="{% url 'accounts:profile' %}">Profile</a></li>
-                            <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
-                            <li><a href="{% url 'accounts:sign_out' %}">Sign Out</a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
+                        </ul>
+                    </nav>
+                {% else %}
+                    <nav class="navbar navbar-expand-sm">
+                        <div class="container">
+                            <div class="collapse navbar-collapse">
+                            <ul class="navbar-nav ml-auto circle--inline">
+                                <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Settings/ Sign Out</a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-style">
+                                    <a class="dropdown-item" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
+                                    <a class="dropdown-item" href="{% url 'accounts:change_password' %}">Change password</a>
+                                    <a class="dropdown-item" href="{% url 'accounts:change_email' %}">Change email</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'accounts:sign_out' %}">Sign Out</a>
+                                </div>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                    </nav>
+                {% endif %}
             </div>
         </div>
     </div>

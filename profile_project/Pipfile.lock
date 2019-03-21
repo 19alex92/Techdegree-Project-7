@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e35a6988872938ccff1a65474465481d8885cb5d465b947996b5aa775027952f"
+            "sha256": "71c9d4f8cc5a43dd531bbc23f61b927376b8e37571a4e288fa3994020f0e693b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,36 @@
             ],
             "index": "pypi",
             "version": "==1.9.9"
+        },
+        "django-bootstrap-datepicker-plus": {
+            "hashes": [
+                "sha256:490058eba99d47f48a7d24fa78581c0e36375bdc7aa9605783eeb170d51fd0df",
+                "sha256:a8bc19cc6846f97ff1e6c447f4e0387881d16e8afa1e8bd7a652c19e545c566b"
+            ],
+            "index": "pypi",
+            "version": "==3.0.5"
+        },
+        "django-bootstrap4": {
+            "hashes": [
+                "sha256:9f115534ae8d052d397201f3d716c10d7c9832b422e44dd7382418c6f274df18"
+            ],
+            "index": "pypi",
+            "version": "==0.0.8"
+        },
+        "django-froala-editor": {
+            "hashes": [
+                "sha256:65e45a81dd3d869ccfd791e8782dba786dc4cf1862c865c78bf6e93dc89e1da0"
+            ],
+            "index": "pypi",
+            "version": "==2.9.3"
+        },
+        "django-tinymce": {
+            "hashes": [
+                "sha256:5a6e21406daafab22124be5c447abdfe78937307420daae0b997d2be0f08c58b",
+                "sha256:bb7311a2ce705a0b95f4ae8fab4f17445982719b557f4e935d68dae514f7df0a"
+            ],
+            "index": "pypi",
+            "version": "==2.8.0"
         },
         "pillow": {
             "hashes": [

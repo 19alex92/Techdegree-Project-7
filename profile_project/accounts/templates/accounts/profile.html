@@ -18,7 +18,7 @@
         <P>{{ user.profile.favorite_animal }}</P>
         <P>{{ user.profile.favorite_food }}</P>
         <P>{{ user.profile.hobby }}</P>
-        <p>{{ user.profile.bio }}</p>
+        <p>{{ user.profile.bio|safe|escape }}</p>
         <a href="{% url 'accounts:edit_profile' %}">Edit Profile Information</a>
     </div>
 </div>
