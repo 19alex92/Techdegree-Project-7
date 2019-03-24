@@ -12,6 +12,8 @@ django-bootstrap4 = "*"
 django-bootstrap-datepicker-plus = "*"
 django-tinymce = "*"
 django-froala-editor = "*"
+django-jquery = "*"
+django-password-strength = "*"
 
 [requires]
 python_version = "3.7"

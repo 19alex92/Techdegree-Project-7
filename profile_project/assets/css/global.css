@@ -901,7 +901,7 @@ input[type="reset"].button-primary,
 input[type="button"].button-primary,
 button.button-primary {
   color: #fff;
-  background-color: #689b98;
+  background-color: #005661;
 }
 /* line 68, ../sass/circle/core/buttons.sass */
 .button.button-primary svg, input[type="submit"].button-primary svg,
@@ -2105,4 +2105,30 @@ input[type="email"].circle--input--h6, input[type="number"].circle--input--h6, i
 }
 .dropdown-menu-style a {
   color: #000;
+}
+
+.profile h2 {
+  margin-bottom: .5rem !important;
+}
+
+.profile p {
+  margin-bottom: 0rem !important;
+}
+
+.profile a {
+  color: #ed5a5a !important;
+}
+
+.profile hr {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.profile-bottom {
+  text-align: center !important;
+}
+
+.profile-bottom hr {
+  margin-bottom: 1.5rem;
+  border-top: 1.5px solid #E1E1E1;
 }

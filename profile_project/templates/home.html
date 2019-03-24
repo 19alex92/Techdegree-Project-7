@@ -1,11 +1,14 @@
 {% extends 'layout.html' %}
 {% block body %}
-    <div class="grid-25">
-        nav here maybe?
-    </div>
-    <div class="grid-75">
+    <div class="grid-100">
+        {% if user.is_authenticated %}
+        <h1>Hello {{ user.username }}!</h1>
+        <p>Glad to see you! At the upper left corner you can go to your profile and also go back to this page when clicking on the circle.</p>
+        <p>At the upper right corner you have your profile settings as well as the possibility to change your Email, Password or Sign Out.</p>
+        {% else %}
         <h1>Welcome!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad amet assumenda beatae blanditiis, deserunt doloremque ea earum excepturi id, impedit ipsam magnam nulla obcaecati, quidem quis soluta tenetur vitae?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad amet assumenda beatae blanditiis, deserunt doloremque ea earum excepturi id, impedit ipsam magnam nulla obcaecati, quidem quis soluta tenetur vitae?</p>
+        <p>Glad to have you on this profile app! Fell free to Sign In or Sign Up if you have no account yet.</p>
+        <p>Have fun exploring!</p>
+        {% endif %}
     </div>
 {% endblock %}

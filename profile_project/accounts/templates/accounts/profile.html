@@ -9,17 +9,65 @@
         <img class="grid-100" src="{{ user.profile.image.url }}">
     </div>
 
-    <div class="grid-75">
-        <h1>{{ user.username }}</h1>
+    <div class="grid-75 profile">
+        <h1>Profile of {{ user.username }}</h1>
+        <h2>E-Mail:</h2>
         <p>{{ user.email }}</p>
-        <P>{{ user.profile.first_name }}</P>
-        <P>{{ user.profile.last_name }}</P>
-        <P>{{ user.profile.date_of_birth }}</P>
-        <P>{{ user.profile.favorite_animal }}</P>
-        <P>{{ user.profile.favorite_food }}</P>
-        <P>{{ user.profile.hobby }}</P>
-        <p>{{ user.profile.bio|safe|escape }}</p>
-        <a href="{% url 'accounts:edit_profile' %}">Edit Profile Information</a>
+        <hr>
+        <h2>First Name:</h2>
+        {% if user.profile.first_name or user.profile.first_name != "" %}
+            <P>{{ user.profile.first_name }}</P>
+        {% else %}
+            <a href="{% url 'accounts:edit_profile' %}">Click here to add a first name</a>
+        {% endif %}
+        <hr>
+        <h2>Last Name:</h2>
+        {% if user.profile.last_name or user.profile.last_name != "" %}
+            <P>{{ user.profile.last_name }}</P>
+        {% else %}
+            <a href="{% url 'accounts:edit_profile' %}">Click here to add a last name</a>
+        {% endif %}
+        <hr>
+        <h2>Date of birth:</h2>
+        {% if user.profile.date_of_birth %}
+            <P>{{ user.profile.date_of_birth }}</P>
+        {% else %}
+            <a href="{% url 'accounts:edit_profile' %}">Click here to add a date of birth</a>
+        {% endif %}
+        <hr>
+        <h2>Favorite Animal:</h2>
+        {% if user.profile.favorite_animal or user.profile.favorite_animal != "" %}
+            <P>{{ user.profile.favorite_animal }}</P>
+        {% else %}
+            <a href="{% url 'accounts:edit_profile' %}">Click here to add a favorite animal</a>
+        {% endif %}
+        <hr>
+        <h2>Favorite Food:</h2>
+        {% if user.profile.favorite_food or user.profile.favorite_food != "" %}
+            <P>{{ user.profile.favorite_food }}</P>
+        {% else %}
+            <a href="{% url 'accounts:edit_profile' %}">Click here to add a favorite food</a>
+        {% endif %}
+        <hr>
+        <h2>Hobby:</h2>
+        {% if user.profile.hobby or user.profile.hobby != "" %}
+            <P>{{ user.profile.hobby }}</P>
+        {% else %}
+            <a href="{% url 'accounts:edit_profile' %}">Click here to add a hobby</a>
+        {% endif %}
+        <hr>
+        <h2>Bio:</h2>
+        {% if user.profile.bio or user.profile.bio != "" %}
+            <p>{{ user.profile.bio|safe|escape }}</p>
+        {% else %}
+        <a href="{% url 'accounts:edit_profile' %}">Click here to add a bio</a>
+        {% endif %}
+    </div>
+    <div class="grid-100 profile-bottom">
+        <hr>
+        <form action="{% url 'accounts:edit_profile' %}">
+            <input type="submit" class="button-primary" value="Edit Profile">
+        </form>
     </div>
 </div>
 

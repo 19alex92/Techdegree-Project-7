@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'bootstrap_datepicker_plus',
     'froala_editor',
+    'jquery',
+    'django_password_strength',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -107,16 +109,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'accounts.validators.NumberValidator',
-    },
+    },  # Validator defined in account/validators.py
     {
         'NAME': 'accounts.validators.SymbolValidator',
-    },
+    },  # Validator defined in account/validators.py
     {
         'NAME': 'accounts.validators.LowercaseValidator',
-    },
+    },  # Validator defined in account/validators.py
     {
         'NAME': 'accounts.validators.UppercaseValidator',
-    },
+    },  # Validator defined in account/validators.py
 ]
 
 
@@ -147,6 +149,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'accounts:sign_in'
 
-FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'draggable',
-        'entities', 'font_family', 'font_size', 'fullscreen', 'line_breaker', 'link', 'lists',
-        'paragraph_format', 'quick_insert', 'save', 'url')
+FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier',
+                         'code_view', 'draggable', 'entities', 'font_family',
+                         'font_size', 'fullscreen', 'line_breaker', 'link',
+                         'lists', 'paragraph_format', 'quick_insert',
+                         'save', 'url')

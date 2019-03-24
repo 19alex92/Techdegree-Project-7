@@ -5,34 +5,41 @@ import re
 
 
 class NumberValidator(object):
+    '''Checks if there is at least one number in the password'''
     def validate(self, password, user=None):
         if not re.findall('\d', password):
             raise ValidationError(
-                _("The password must have at least one or more numerical digits."),
+                _("The password must have at least"
+                  " one or more numerical digits."),
                 code='password_no_number',
             )
 
     def get_help_text(self):
-        return _("The password must have at least one or more numerical digits.")
+        return _("The password must have at least"
+                 " one or more numerical digits.")
 
 
 class SymbolValidator(object):
+    '''Checks if there is at least one symbol in the password'''
     def validate(self, password, user=None):
         if not re.findall('[()[\]{}|\\`~!@#$%^&*_\-+=;:\'",<>./?]', password):
             raise ValidationError(
-                _("The password must contain one or more of the following symbols: " +
+                _("The password must contain one or"
+                  " more of the following symbols: " +
                   "()[]{}|\`~!@#$%^&*_-+=;:'\",<>./?"),
                 code='password_no_symbol',
             )
 
     def get_help_text(self):
         return _(
-            "Your password must contain one or more of the following symbols: " +
+            "Your password must contain one or"
+            " more of the following symbols: " +
             "()[]{}|\`~!@#$%^&*_-+=;:'\",<>./?"
         )
 
 
 class LowercaseValidator(object):
+    '''Checks if there is at least one lowercase letter in the password'''
     def validate(self, password, user=None):
         if not re.findall('[a-z]', password):
             raise ValidationError(
@@ -47,6 +54,7 @@ class LowercaseValidator(object):
 
 
 class UppercaseValidator(object):
+    '''Checks if there is at least one uppercase letter in the password'''
     def validate(self, password, user=None):
         if not re.findall('[A-Z]', password):
             raise ValidationError(

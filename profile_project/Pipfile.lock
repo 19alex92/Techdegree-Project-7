@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "71c9d4f8cc5a43dd531bbc23f61b927376b8e37571a4e288fa3994020f0e693b"
+            "sha256": "50a89496e16cb9390a0ff6c858893aad986a237c8cf09b2944f9e6331d5b0aa3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,6 +45,21 @@
             ],
             "index": "pypi",
             "version": "==2.9.3"
+        },
+        "django-jquery": {
+            "hashes": [
+                "sha256:414ac1083708ac71cc771612e7287702c939d06cd357fd53bb1271a4f6255115",
+                "sha256:e7e2ac14234bac26be937e448d94efd6d37ee2f3cdbaa2def3c8e74c2afb2b9a"
+            ],
+            "index": "pypi",
+            "version": "==3.1.0"
+        },
+        "django-password-strength": {
+            "hashes": [
+                "sha256:e7275e10247131966b7ee79f73f4a8223c8ade81c25702f1329870fe810ad7c4"
+            ],
+            "index": "pypi",
+            "version": "==1.2.1"
         },
         "django-tinymce": {
             "hashes": [

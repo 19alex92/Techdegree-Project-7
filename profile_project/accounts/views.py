@@ -1,12 +1,14 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import (authenticate, login, logout,
+                                 update_session_auth_hash)
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from .forms import UserRegisterForm, UserEditForm, ProfileEditForm, ChangeEmailForm
+from .forms import (UserRegisterForm, UserEditForm, ProfileEditForm,
+                    ChangeEmailForm, PasswordStrengthForm)
 
 
 def sign_in(request):
@@ -53,6 +55,7 @@ def sign_up(request):
     return render(request, 'accounts/sign_up.html', {'form': form})
 
 
+@login_required
 def sign_out(request):
     logout(request)
     messages.success(request, "You've been signed out. Come back soon!")
@@ -68,7 +71,8 @@ def profile(request):
 def edit_profile(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, instance=request.user)
-        profile_form = ProfileEditForm(request.POST, request.FILES, instance=request.user.profile)
+        profile_form = ProfileEditForm(request.POST, request.FILES,
+                                       instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -89,9 +93,10 @@ def edit_profile(request):
     return render(request, 'accounts/edit_profile.html', context)
 
 
+@login_required
 def change_password(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = PasswordStrengthForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
@@ -100,10 +105,11 @@ def change_password(request):
         else:
             messages.error(request, 'Please correct the error')
     else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', {'form':form})
+        form = PasswordStrengthForm(request.user)
+    return render(request, 'accounts/change_password.html', {'form': form})
 
 
+@login_required
 def change_email(request):
     if request.method == 'POST':
         form = ChangeEmailForm(request.POST, instance=request.user)
@@ -115,4 +121,4 @@ def change_email(request):
             messages.error(request, 'Please correct the error')
     else:
         form = ChangeEmailForm(instance=request.user)
-    return render(request, 'accounts/change_email.html', {'form':form})
+    return render(request, 'accounts/change_email.html', {'form': form})

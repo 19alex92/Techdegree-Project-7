@@ -1,2 +1,8 @@
-Django==1.9.9
-Pillow==5.3.0
+django-bootstrap-datepicker-plus==3.0.5
+django-bootstrap4==0.0.8
+django-froala-editor==2.9.3
+django-jquery==3.1.0
+django-password-strength==1.2.1
+django-tinymce==2.8.0
+django==1.9.9
+pillow==5.3.0
